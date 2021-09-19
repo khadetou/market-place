@@ -1,4 +1,4 @@
-import asyncHandler from "middleware/asyncHandler";
+import asyncHandler from "@/middlewares/asyncHandler";
 import User from "@/models/user";
 import absoluteUrl from "next-absolute-url";
 import sendEmail from "@/utils/sendEmail";
