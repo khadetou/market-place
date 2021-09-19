@@ -28,10 +28,12 @@ const userSchema = new mongoose.Schema({
     public_id: {
       type: String,
       required: true,
+      default: null,
     },
     url: {
       type: String,
       required: true,
+      default: null,
     },
   },
   role: {
