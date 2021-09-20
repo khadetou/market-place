@@ -14,15 +14,23 @@ cloudinary.config({
 //@Route Post/api/auth/register
 //@Access public
 export const registerUser = asyncHandler(async (req, res) => {
-  const result = await cloudinary.v2.uploader.upload(req.body.avatar, {
-    folder: "marketplace/avatars",
-    width: "150",
-    crop: "scale",
-  });
+  let { firstname, name, email, password, avatar } = req.body;
 
-  let { firstname, name, email, password } = req.body;
+  const avatarObj = {};
+
+  if (avatar) {
+    const result = await cloudinary.v2.uploader.upload(avatar, {
+      folder: "marketplace/avatars",
+      width: "150",
+      crop: "scale",
+    });
+    (avatarObj.public_id = result.public_id),
+      (avatarObj.ur = result.secure_url);
+  }
+
   const salt = await bcryptjs.genSalt(10);
   password = await bcryptjs.hash(password, salt);
+  console.log("object");
   let user = await User.findOne({ email });
   if (user) {
     res.statu(400);
@@ -34,10 +42,7 @@ export const registerUser = asyncHandler(async (req, res) => {
     name,
     email,
     password,
-    avatar: {
-      public_id: result.public_id,
-      url: result.secure_url,
-    },
+    avatarObj,
   });
 
   res.status(200).json(user);

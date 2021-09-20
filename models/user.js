@@ -37,10 +37,11 @@ const userSchema = new mongoose.Schema({
     },
   },
   role: {
-    type: String,
+    type: [String],
+    enum: ["Subscriber", "Instructor", "Admin"],
     default: "User",
   },
-  phoneNumber: {
+  number: {
     type: String,
   },
   idcard: {

@@ -14,6 +14,6 @@ connectDB();
 
 handler.use(isAuthenticated).get(getUser).put(updateUser);
 handler.use(isAuthenticated, authorizeRoles("Admin")).get(getAllUsers);
-handler.use(isAuthenticated, authorizeRoles("Admin")).delete(deletUser);
+handler.use(isAuthenticated, authorizeRoles("Seller")).delete(deletUser);
 handler.use(isAuthenticated).delete(deletUser);
 export default handler;
