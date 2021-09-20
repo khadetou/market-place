@@ -9,6 +9,7 @@ connectDB();
 
 handler.get(getStoreById);
 handler.use(isAuthenticated, authorizeRoles("Seller")).put(updatStore);
+handler.use(isAuthenticated, authorizeRoles("Admin")).delete(removeStore);
 handler.use(isAuthenticated, authorizeRoles("Seller")).delete(removeStore);
 
 export default handler;
