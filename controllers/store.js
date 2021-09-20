@@ -122,7 +122,7 @@ export const getTopStores = asyncHandler(async (req, res) => {
 //@Desc create store
 //@Route put/api/store/:id
 //@Access private
-export const upadatStore = asyncHandler(async (req, res) => {
+export const updatStore = asyncHandler(async (req, res) => {
   const { id } = req.query;
   const { name, description, address, images } = req.body;
 
