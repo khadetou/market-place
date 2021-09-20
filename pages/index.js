@@ -1,8 +1,40 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getUser, deleteUser } from "@/redux/actions/user";
+import { toast } from "react-toastify";
+import { CLEAR_ERROR } from "@/redux/types/types";
+import { signOut } from "next-auth/client";
 
 export default function Home() {
+  const { message, user, error } = useSelector((state) => state.User);
+  const dispatch = useDispatch();
+  console.log(user);
+  useEffect(() => {
+    if (!user) {
+      dispatch(getUser());
+    }
+    if (message) {
+      toast.success(message);
+      signOut();
+      dispatch({ type: CLEAR_SUCCESS });
+    }
+    if (error) {
+      toast.error(error);
+      dispatch({ type: CLEAR_ERROR });
+    }
+  }, [user, error, message]);
+
+  const deleteHandler = () => {
+    if (window.confirm("Are you sure ?")) {
+      if (user) {
+        dispatch(deleteUser(user._id));
+      }
+    }
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -12,8 +44,12 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+        <h1
+          className={styles.title}
+          style={{ cursor: "pointer" }}
+          onClick={deleteHandler}
+        >
+          Welcome to delete
         </h1>
 
         <p className={styles.description}>

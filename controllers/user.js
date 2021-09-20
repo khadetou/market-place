@@ -66,7 +66,10 @@ export const updateUser = asyncHandler(async (req, res) => {
 
 export const deletUser = asyncHandler(async (req, res) => {
   const { id } = req.query;
-  if (req.user._id === id || req.user.role.includes("Admin")) {
+  if (
+    req.user._id.toString() === id.toString() ||
+    req.user.role.includes("Admin")
+  ) {
     const user = await User.findById(id);
     if (!user) {
       res.status(404);
