@@ -1,5 +1,6 @@
 import asyncHandler from "@/middlewares/asyncHandler";
 import User from "@/models/user";
+import Store from "@/models/store";
 import absoluteUrl from "next-absolute-url";
 import sendEmail from "@/utils/sendEmail";
 import crypto from "crypto";
@@ -188,4 +189,36 @@ export const resetPassword = asyncHandler(async (req, res, next) => {
   res.status(200).json({
     user,
   });
+});
+
+//@route Post/api/store/:id
+//@desc  Souscribtion to the Store
+//@access Private
+
+export const subscribe = asyncHandler(async (req, res) => {
+  let store = await Store.findById(req.query.id);
+  if (store) {
+    const subscribed = store.subscription.find(
+      (emails) => emails.email === req.user.email
+    );
+
+    if (subscribed) {
+      store.subscription = store.subscription.filter(
+        (emails) => emails.email !== req.customer.email
+      );
+      await trader.save();
+      res.json({ msg: "unSubscribed" });
+    } else {
+      const follower = {
+        firstname: req.user.firstname,
+        name: req.user.name,
+        email: req.user.email,
+        user: req.user._id,
+      };
+
+      store.subscription.push(follower);
+      await store.save();
+      res.status(201).json({ msg: "Suscribed" });
+    }
+  }
 });

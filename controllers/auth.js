@@ -1,8 +1,6 @@
 import User from "@/models/user";
 import bcryptjs from "bcryptjs";
-import asyncHandler from "middleware/asyncHandler";
-import absoluteUrl from "next-absolute-url";
-import sendEmail from "@/utils/sendEmail";
+import asyncHandler from "@/middlewares/asyncHandler";
 import cloudinary from "cloudinary";
 
 //CLOUDINARY SETTINGS
