@@ -27,18 +27,16 @@ const userSchema = new mongoose.Schema({
   avatar: {
     public_id: {
       type: String,
-      required: true,
       default: null,
     },
     url: {
       type: String,
-      required: true,
       default: null,
     },
   },
   role: {
     type: [String],
-    enum: ["Subscriber", "Instructor", "Admin"],
+    enum: ["User", "Seller", "Admin"],
     default: "User",
   },
   number: {

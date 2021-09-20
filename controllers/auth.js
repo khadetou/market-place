@@ -30,20 +30,20 @@ export const registerUser = asyncHandler(async (req, res) => {
 
   const salt = await bcryptjs.genSalt(10);
   password = await bcryptjs.hash(password, salt);
-  console.log("object");
+
   let user = await User.findOne({ email });
+
   if (user) {
-    res.statu(400);
+    res.status(400);
     throw Error("This email already exist!");
   }
 
-  user = new User({
+  user = await User.create({
     firstname,
     name,
     email,
     password,
     avatarObj,
   });
-
   res.status(200).json(user);
 });
