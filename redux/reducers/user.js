@@ -6,6 +6,8 @@ import {
   GET_USER_FAIL,
   CLEAR_ERROR,
   CLEAR_SUCCESS,
+  GET_USERS_SUCCESS,
+  GET_USERS_FAIL,
 } from "../types/types";
 
 const initialState = {
@@ -27,6 +29,13 @@ export const User = (state = initialState, action) => {
         loading: false,
       };
 
+    case GET_USERS_SUCCESS:
+      return {
+        ...state,
+        users: payload,
+        loading: false,
+      };
+
     case DELETE_USER_SUCCESS:
       return {
         ...state,
@@ -34,6 +43,7 @@ export const User = (state = initialState, action) => {
         loading: false,
       };
 
+    case GET_USERS_FAIL:
     case GET_USER_FAIL:
     case DELETE_USER_FAIL:
       return {

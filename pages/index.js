@@ -3,16 +3,24 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getUser, deleteUser } from "@/redux/actions/user";
+import {
+  getUser,
+  deleteUser,
+  deleteUserByAdmin,
+  getAllUser,
+} from "@/redux/actions/user";
 import { toast } from "react-toastify";
 import { CLEAR_ERROR } from "@/redux/types/types";
 import { signOut } from "next-auth/client";
 
 export default function Home() {
-  const { message, user, error } = useSelector((state) => state.User);
+  const { message, user, error, users } = useSelector((state) => state.User);
   const dispatch = useDispatch();
-  console.log(user);
+
   useEffect(() => {
+    if (!users) {
+      dispatch(getAllUser());
+    }
     if (!user) {
       dispatch(getUser());
     }
@@ -21,16 +29,16 @@ export default function Home() {
       signOut();
       dispatch({ type: CLEAR_SUCCESS });
     }
-    if (error) {
-      toast.error(error);
-      dispatch({ type: CLEAR_ERROR });
-    }
-  }, [user, error, message]);
+    // if (error) {
+    //   toast.error(error);
+    //   dispatch({ type: CLEAR_ERROR });
+    // }
+  }, [user, error, message, users]);
 
   const deleteHandler = () => {
     if (window.confirm("Are you sure ?")) {
-      if (user) {
-        dispatch(deleteUser(user._id));
+      if (users) {
+        dispatch(deleteUserByAdmin(users[1]._id));
       }
     }
   };

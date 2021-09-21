@@ -14,7 +14,7 @@ cloudinary.config({
 //@Route Post/api/auth/register
 //@Access public
 export const registerUser = asyncHandler(async (req, res) => {
-  let { firstname, name, email, password, avatar } = req.body;
+  let { firstname, name, email, password, avatar, role } = req.body;
 
   const avatarObj = {};
 
@@ -44,6 +44,7 @@ export const registerUser = asyncHandler(async (req, res) => {
     email,
     password,
     avatarObj,
+    role,
   });
   res.status(200).json(user);
 });
