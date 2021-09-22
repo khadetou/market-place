@@ -43,7 +43,7 @@ const productSchema = mongoose.Schema(
       type: String,
       required: [true, "Enter the product name"],
     },
-    image: [
+    images: [
       {
         public_id: {
           type: String,

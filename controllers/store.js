@@ -139,7 +139,7 @@ export const updatStore = asyncHandler(async (req, res) => {
 
         for (let i = 0; i < images.length; i++) {
           const result = await cloudinary.v2.uploader.upload(images[i], {
-            folder: "bookit/rooms",
+            folder: "marketplace/stores",
           });
 
           imagesLinks.push({
