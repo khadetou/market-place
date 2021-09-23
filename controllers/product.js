@@ -49,6 +49,15 @@ export const createProduct = asyncHandler(async (req, res) => {
   }
 });
 
+//@Desc Get All Products
+//@Route Get/api/product
+//@Access Seller
+export const getAllSellerProduct = asyncHandler(async (req, res) => {
+  let store = await Store.findOne({ user: req.user._id });
+  let product = await Product.find({ store: store._id });
+  res.json(product);
+});
+
 //@Desc update product
 //@Route put/api/products/:id
 //@Access private Seller
@@ -58,6 +67,10 @@ export const updateProduct = asyncHandler(async (req, res) => {
     req.body;
 
   let product = await Product.findById(req.query.id);
+  if (req.user._id.toString() !== product.id) {
+    res.status(403);
+    throw new Error("UnAuthorized !");
+  }
 
   if (product) {
     if (images) {
