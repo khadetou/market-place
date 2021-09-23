@@ -1,6 +1,6 @@
 import axios from "axios";
 import { CREATE_STORE_FAIL, CREATE_STORE_SUCCESS } from "../types/types";
-
+import { setLoadingBoutique } from "./setLoading";
 export const createStore = (dataStore) => async (dispatch) => {
   try {
     const config = {
@@ -8,7 +8,7 @@ export const createStore = (dataStore) => async (dispatch) => {
         "Content-Type": "application/json",
       },
     };
-
+    dispatch(setLoadingBoutique());
     const { data } = await axios.post("/api/store", dataStore, config);
     dispatch({
       type: CREATE_STORE_SUCCESS,
