@@ -15,6 +15,7 @@ export const createStore = (dataStore) => async (dispatch) => {
       payload: data,
     });
   } catch (error) {
+    console.log({ error });
     dispatch({
       type: CREATE_STORE_FAIL,
       payload: error.response.data.message,

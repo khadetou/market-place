@@ -20,7 +20,7 @@ const subscribersSchema = new mongoose.Schema(
   {
     firstname: { type: String, required: true },
     name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
+    email: { type: String, required: true, unique: true, sparse: true },
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,

@@ -6,6 +6,13 @@ import cloudinary from "cloudinary";
 //@Route Post/api/store
 //@Access private
 
+//CLOUDINARY SETTINGS
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_KEY,
+  api_secret: process.env.CLOUDINARY_SECRET,
+});
+
 export const createStore = asyncHandler(async (req, res) => {
   const { name, description, images, address, number } = req.body;
 
