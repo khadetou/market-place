@@ -7,7 +7,15 @@ import { isAuthenticated, authorizeRoles } from "@/middlewares/auth";
 const handler = nc({ onError });
 connectDB();
 
-handler.get(getAllStores).get(getTopStores);
+// export const config = {
+//   api: {
+//     bodyParser: {
+//       sizeLimit: "50mb",
+//     },
+//   },
+// };
+
 handler.use(isAuthenticated, authorizeRoles("Seller")).post(createStore);
+handler.get(getAllStores).get(getTopStores);
 
 export default handler;

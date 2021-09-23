@@ -6,32 +6,38 @@ import cloudinary from "cloudinary";
 //@Route Post/api/store
 //@Access private
 
-export const createStore = asyncHandler(async (req, res) => {
-  const { name, description, address, images } = req.body;
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_KEY,
+  api_secret: process.env.CLOUDINARY_SECRET,
+});
 
-  const storeField = {};
-  storeField.id = req.user._id;
-  let imagesLinks = [];
+export const createStore = asyncHandler(async (req, res) => {
+  const { name, description, images, address, number } = req.body;
+
+  let storeField = {};
+  storeField.user = req.user._id;
+  let imageLinks = [];
 
   for (let i = 0; i < images.length; i++) {
     const result = await cloudinary.v2.uploader.upload(images[i], {
       folder: "marketplace/stores",
     });
 
-    imagesLinks.push({
+    imageLinks.push({
       public_id: result.public_id,
       url: result.secure_url,
     });
   }
 
-  storeField.images = imagesLinks;
+  if (imageLinks) storeField.images = imageLinks;
   if (name) storeField.name = name;
   if (description) storeField.description = description;
   if (address) storeField.address = address;
   if (number) storeField.number = number;
 
   let store = await Store.findOne({ user: req.user._id });
-  //CREATE
+
   store = new Store(storeField);
   await store.save();
   res.json(store);

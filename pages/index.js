@@ -36,11 +36,12 @@ export default function Home() {
   }, [user, error, message, users]);
 
   const deleteHandler = () => {
-    if (window.confirm("Are you sure ?")) {
-      if (users) {
-        dispatch(deleteUserByAdmin(users[1]._id));
-      }
-    }
+    signOut();
+    // if (window.confirm("Are you sure ?")) {
+    //   if (users) {
+    //     dispatch(deleteUserByAdmin(users[1]._id));
+    //   }
+    // }
   };
 
   return (
