@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const reviewSchema = mongoose.Schema(
+const productReviewSchema = mongoose.Schema(
   {
     name: { type: String, required: true },
     rating: { type: Number, required: true },
@@ -15,64 +15,65 @@ const reviewSchema = mongoose.Schema(
     timestamps: true,
   }
 );
-
-const subscribersSchema = new mongoose.Schema(
+const productSchema = mongoose.Schema(
   {
-    firstname: { type: String, required: true },
-    name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: "User",
     },
-  },
-  {
-    timestamps: true,
-  }
-);
-
-const storeSchema = mongoose.Schema(
-  {
-    user: {
+    store: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: "User",
+      ref: "Store",
     },
     name: {
       type: String,
-      required: [true, "Enter the store name"],
-    },
-    description: {
-      type: String,
-      required: [true, "Enter a description"],
+      required: [true, "Enter the product name"],
     },
     images: [
       {
         public_id: {
           type: String,
-          required: [true, "Images are required"],
+          required: true,
         },
         url: {
           type: String,
-          required: [true, "Images are required"],
+          required: true,
         },
       },
     ],
-    subscription: [subscribersSchema],
-    address: {
+    brand: {
       type: String,
+      required: true,
     },
-    number: {
+    category: {
       type: String,
+      required: true,
     },
-    reviews: [reviewSchema],
+    description: {
+      type: String,
+      required: true,
+    },
+    reviews: [productReviewSchema],
     rating: {
       type: Number,
       required: true,
       default: 0,
     },
+
     numReviews: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+
+    price: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    countInStock: {
       type: Number,
       required: true,
       default: 0,
@@ -83,4 +84,5 @@ const storeSchema = mongoose.Schema(
   }
 );
 
-export default mongoose.models.Store || mongoose.model("Store", storeSchema);
+export default mongoose.models.Product ||
+  mongoose.model("Product", productSchema);
