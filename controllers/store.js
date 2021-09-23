@@ -88,7 +88,7 @@ export const getAllStores = asyncHandler(async (req, res) => {
       }
     : {};
 
-  const count = await Product.countDocument({ ...keyword });
+  const count = await Store.countDocument({ ...keyword });
   const stores = await Store.find({ ...keyword })
     .limit(pageSize)
     .skip(pageSize * (page - 1));

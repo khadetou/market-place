@@ -9,7 +9,7 @@ export const createProduct = (dataProduct) => async (dispatch) => {
         "Content-Type": "application/json",
       },
     };
-    console.log(dataProduct);
+
     dispatch(setLoadingProduct());
     const { data } = await axios.post("/api/product", dataProduct, config);
     dispatch({
@@ -17,7 +17,6 @@ export const createProduct = (dataProduct) => async (dispatch) => {
       payload: data,
     });
   } catch (error) {
-    console.log({ error });
     dispatch({
       type: CREATE_PRODUCT_FAIL,
       payload: error.response.data.message,
