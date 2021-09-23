@@ -37,11 +37,11 @@ export default function Home() {
 
   const deleteHandler = () => {
     signOut();
-    // if (window.confirm("Are you sure ?")) {
-    //   if (users) {
-    //     dispatch(deleteUserByAdmin(users[1]._id));
-    //   }
-    // }
+    if (window.confirm("Are you sure ?")) {
+      if (user) {
+        dispatch(deleteUser(user._id));
+      }
+    }
   };
 
   return (

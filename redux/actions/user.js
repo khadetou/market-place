@@ -19,7 +19,6 @@ export const getUser = () => async (dispatch) => {
       payload: data,
     });
   } catch (error) {
-    console.log({ error });
     dispatch({
       type: GET_USER_FAIL,
       payload: error.response.data.message,
@@ -37,7 +36,6 @@ export const getAllUser = () => async (dispatch) => {
       payload: data,
     });
   } catch (error) {
-    console.log({ error });
     dispatch({
       type: GET_USERS_FAIL,
       payload: error.response.data.message,
@@ -55,7 +53,6 @@ export const deleteUser = (id) => async (dispatch) => {
       payload: data,
     });
   } catch (error) {
-    console.log({ error });
     dispatch({
       type: DELETE_USER_FAIL,
       payload: error.response.data.message,
@@ -73,7 +70,6 @@ export const deleteUserByAdmin = (id) => async (dispatch) => {
       payload: data,
     });
   } catch (error) {
-    console.log({ error });
     dispatch({
       type: DELETE_USER_FAIL,
       payload: error.response.data.message,
