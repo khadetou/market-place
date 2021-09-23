@@ -1,6 +1,7 @@
 import axios from "axios";
 import { CREATE_STORE_FAIL, CREATE_STORE_SUCCESS } from "../types/types";
 import { setLoadingBoutique } from "./setLoading";
+
 export const createStore = (dataStore) => async (dispatch) => {
   try {
     const config = {

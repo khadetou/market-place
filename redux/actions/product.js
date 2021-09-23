@@ -4,6 +4,8 @@ import {
   CREATE_PRODUCT_SUCCESS,
   GET_SELLER_PRODUCTS_FAIL,
   GET_SELLER_PRODUCTS_SUCCESS,
+  GET_PRODUCTS_SUCCESS,
+  GET_PRODUCTS_FAIL,
   UPDATE_PRODUCT_FAIL,
   UPDATE_PRODUCT_SUCCESS,
 } from "../types/types";
@@ -24,6 +26,7 @@ export const createProduct = (dataProduct) => async (dispatch) => {
       payload: data,
     });
   } catch (error) {
+    console.log({ error });
     dispatch({
       type: CREATE_PRODUCT_FAIL,
       payload: error.response.data.message,
@@ -43,6 +46,24 @@ export const getSellerProduct = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: GET_SELLER_PRODUCTS_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+//GET  PRODUCTS BY CATEGORY
+export const getProductByCategory = (category) => async (dispatch) => {
+  try {
+    dispatch(setLoadingProduct());
+    const { data } = await axios.get(
+      `/api/product/category?category=${category}`
+    );
+    dispatch({
+      type: GET_PRODUCTS_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: GET_PRODUCTS_FAIL,
       payload: error.response.data.message,
     });
   }

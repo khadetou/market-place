@@ -3,6 +3,8 @@ import {
   CLEAR_SUCCESS,
   CREATE_PRODUCT_FAIL,
   CREATE_PRODUCT_SUCCESS,
+  GET_PRODUCTS_FAIL,
+  GET_PRODUCTS_SUCCESS,
   GET_SELLER_PRODUCTS_FAIL,
   GET_SELLER_PRODUCTS_SUCCESS,
   SET_LOADING_PRODUCT,
@@ -33,7 +35,12 @@ export const Products = (state = initialState, action) => {
         product: payload,
         loading: false,
       };
-
+    case GET_PRODUCTS_SUCCESS:
+      return {
+        ...state,
+        product: payload,
+        loading: false,
+      };
     case UPDATE_PRODUCT_SUCCESS:
       return {
         ...state,
@@ -41,6 +48,7 @@ export const Products = (state = initialState, action) => {
         loading: false,
       };
 
+    case GET_PRODUCTS_FAIL:
     case GET_SELLER_PRODUCTS_FAIL:
     case UPDATE_PRODUCT_FAIL:
     case CREATE_PRODUCT_FAIL:

@@ -7,6 +7,13 @@ import cloudinary from "cloudinary";
 //@Route post/api/product
 //@Access private Seller
 
+//CLOUDINARY SETTINGS
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_KEY,
+  api_secret: process.env.CLOUDINARY_SECRET,
+});
+
 export const createProduct = asyncHandler(async (req, res) => {
   let store = await Store.findOne({ user: req.user._id });
 
@@ -49,13 +56,55 @@ export const createProduct = asyncHandler(async (req, res) => {
   }
 });
 
-//@Desc Get All Products
+//@Desc Get All Seller Products
 //@Route Get/api/product
 //@Access Seller
 export const getAllSellerProduct = asyncHandler(async (req, res) => {
   let store = await Store.findOne({ user: req.user._id });
   let product = await Product.find({ store: store._id });
+
   res.json(product);
+});
+
+//@Desc Get All Products
+//@Route Get/api/product
+//@Access Seller
+export const getAllProduct = asyncHandler(async (req, res) => {
+  //PAGINATION
+  const pageSize = 10;
+  const page = Number(req.query.pageNumber) || 1;
+
+  //SEARCH BACKEND FUNCTIONNALITY
+  const keyword = req.query.keyword
+    ? {
+        name: {
+          $regex: req.query.keyword,
+          $option: "i",
+        },
+      }
+    : {};
+
+  const count = await Product.countDocuments({ ...keyword });
+  const product = await Product.find({ ...keyword })
+    .limit(pageSize)
+    .skip(pageSize * (page - 1));
+
+  res.json({ product, page, pages: Math.ceil(count / pageSize) });
+});
+
+//@Desc Get Products By Category
+//@Route Get/api/product
+//@Access Seller
+export const getProductByCategory = asyncHandler(async (req, res) => {
+  //PAGINATION
+  const pageSize = 10;
+  const page = Number(req.query.pageNumber) || 1;
+
+  const { category } = req.query;
+  let product = await Product.find({ category: category })
+    .limit(pageSize)
+    .skip(pageSize * (page - 1));
+  res.json({ product, page, pages: Math.ceil(count / pageSize) });
 });
 
 //@Desc update product
