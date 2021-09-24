@@ -7,9 +7,13 @@ import {
   GET_PRODUCTS_SUCCESS,
   GET_SELLER_PRODUCTS_FAIL,
   GET_SELLER_PRODUCTS_SUCCESS,
+  GET_PRODUCT_SUCCESS,
+  GET_PRODUCT_FAIL,
   SET_LOADING_PRODUCT,
   UPDATE_PRODUCT_FAIL,
   UPDATE_PRODUCT_SUCCESS,
+  DELETE_PRODUCT_SUCCESS,
+  DELETE_PRODUCT_FAIL,
 } from "../types/types";
 
 const initialState = {
@@ -35,6 +39,18 @@ export const Products = (state = initialState, action) => {
         product: payload,
         loading: false,
       };
+    case GET_PRODUCT_SUCCESS:
+      return {
+        ...state,
+        product: payload,
+        loading: false,
+      };
+    case DELETE_PRODUCT_SUCCESS:
+      return {
+        ...state,
+        message: payload,
+        loading: false,
+      };
     case GET_PRODUCTS_SUCCESS:
       return {
         ...state,
@@ -48,6 +64,8 @@ export const Products = (state = initialState, action) => {
         loading: false,
       };
 
+    case DELETE_PRODUCT_FAIL:
+    case GET_PRODUCT_FAIL:
     case GET_PRODUCTS_FAIL:
     case GET_SELLER_PRODUCTS_FAIL:
     case UPDATE_PRODUCT_FAIL:

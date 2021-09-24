@@ -85,11 +85,11 @@ export const getAllProduct = asyncHandler(async (req, res) => {
     : {};
 
   const count = await Product.countDocuments({ ...keyword });
-  const product = await Product.find({ ...keyword })
+  const products = await Product.find({ ...keyword })
     .limit(pageSize)
     .skip(pageSize * (page - 1));
 
-  res.json({ product, page, pages: Math.ceil(count / pageSize) });
+  res.json({ products, page, pages: Math.ceil(count / pageSize) });
 });
 
 //@Desc Get Products By Category
@@ -101,10 +101,46 @@ export const getProductByCategory = asyncHandler(async (req, res) => {
   const page = Number(req.query.pageNumber) || 1;
 
   const { category } = req.query;
-  let product = await Product.find({ category: category })
+  let products = await Product.find({ category: category })
     .limit(pageSize)
     .skip(pageSize * (page - 1));
-  res.json({ product, page, pages: Math.ceil(count / pageSize) });
+  res.json({ products, page, pages: Math.ceil(count / pageSize) });
+});
+
+//@Desc get product by id
+//@Route Get/api/products/:id
+//@Access public
+export const getProductById = asyncHandler(async (req, res) => {
+  const { id } = req.query;
+  const product = await Product.findById(id);
+  if (!product) {
+    res.status(404);
+    throw new Error("Product not found!");
+  }
+  res.json(product);
+});
+
+//@Desc delete product
+//@Route delete/api/products/:id
+//@Access private admin || seller
+export const removeProduct = asyncHandler(async (req, res) => {
+  const { id } = req.query;
+  const product = await Product.findById(id);
+  if (
+    req.user._id.toString() === product.user.toString() ||
+    req.user.role.includes("Admin")
+  ) {
+    if (product) {
+      for (let i = 0; i < product.images.length; i++) {
+        await cloudinary.v2.uploader.destroy(product.images[i].public_id);
+      }
+      await product.remove();
+      res.json({ message: "Product deleted successfully!" });
+    } else {
+      res.status(404);
+      throw new Error("Product not found!");
+    }
+  }
 });
 
 //@Desc update product

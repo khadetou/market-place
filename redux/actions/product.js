@@ -8,6 +8,10 @@ import {
   GET_PRODUCTS_FAIL,
   UPDATE_PRODUCT_FAIL,
   UPDATE_PRODUCT_SUCCESS,
+  GET_PRODUCT_SUCCESS,
+  GET_PRODUCT_FAIL,
+  DELETE_PRODUCT_SUCCESS,
+  DELETE_PRODUCT_FAIL,
 } from "../types/types";
 import { setLoadingProduct } from "./setLoading";
 
@@ -64,6 +68,54 @@ export const getProductByCategory = (category) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: GET_PRODUCTS_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+//GET  PRODUCTS BY ID
+export const getProductById = (id) => async (dispatch) => {
+  try {
+    dispatch(setLoadingProduct());
+    const { data } = await axios.get(`/api/product/${id}`);
+    dispatch({
+      type: GET_PRODUCT_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: GET_PRODUCT_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+//DELETE PRODUCT BY SELLER
+export const deleteProduct = (id) => async (dispatch) => {
+  try {
+    dispatch(setLoadingProduct());
+    const { data } = await axios.delete(`/api/product/${id}`);
+    dispatch({
+      type: DELETE_PRODUCT_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: DELETE_PRODUCT_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+//DELETE PRODUCT BY ADMIN
+export const deleteProductByAdmin = (id) => async (dispatch) => {
+  try {
+    dispatch(setLoadingProduct());
+    const { data } = await axios.delete(`/api/admin/product/${id}`);
+    dispatch({
+      type: DELETE_PRODUCT_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: DELETE_PRODUCT_FAIL,
       payload: error.response.data.message,
     });
   }
