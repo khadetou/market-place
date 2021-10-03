@@ -17,8 +17,16 @@ cloudinary.config({
 export const createProduct = asyncHandler(async (req, res) => {
   let store = await Store.findOne({ user: req.user._id });
 
-  const { name, brand, category, description, price, countInStock, images } =
-    req.body;
+  const {
+    name,
+    brand,
+    category,
+    description,
+    price,
+    countInStock,
+    images,
+    size,
+  } = req.body;
 
   let productField = {};
   let imageLinks = [];
@@ -40,6 +48,7 @@ export const createProduct = asyncHandler(async (req, res) => {
 
     if (name) productField.name = name;
     if (brand) productField.brand = brand;
+    if (size) productField.size = size;
     if (category) productField.category = category;
     if (description) productField.description = description;
     if (price) productField.price = price;
@@ -148,8 +157,16 @@ export const removeProduct = asyncHandler(async (req, res) => {
 //@Access private Seller
 
 export const updateProduct = asyncHandler(async (req, res) => {
-  const { name, brand, category, description, price, countInStock, images } =
-    req.body;
+  const {
+    name,
+    brand,
+    category,
+    description,
+    price,
+    countInStock,
+    images,
+    size,
+  } = req.body;
 
   let product = await Product.findById(req.query.id);
   if (req.user._id.toString() !== product.id) {
@@ -182,6 +199,7 @@ export const updateProduct = asyncHandler(async (req, res) => {
 
     (product.name = name || product.name),
       (product.brand = brand || product.brand),
+      (product.size = size || product.size),
       (product.category = category || product.category),
       (product.description = description || product.description),
       (product.price = price || product.price),

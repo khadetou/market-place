@@ -7,6 +7,6 @@ import { isAuthenticated, authorizeRoles } from "@/middlewares/auth";
 const handler = nc({ onError });
 connectDB();
 
-handler.use(isAuthenticated, authorizeRoles("User", "Admin")).get(getAllUsers);
+handler.use(isAuthenticated, authorizeRoles("Admin")).get(getAllUsers);
 
 export default handler;

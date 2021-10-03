@@ -89,11 +89,11 @@ export const deletUser = asyncHandler(async (req, res) => {
 
 export const getAllUsers = asyncHandler(async (req, res) => {
   const query = req.query.new;
-  console.log(query);
+
   const users = query
     ? await User.find().sort({ _id: -1 }).limit(5)
     : await User.find();
-  console.log(users);
+
   res.json(users);
 });
 

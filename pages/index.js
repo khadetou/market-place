@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   getUser,
@@ -12,6 +12,8 @@ import {
 import { toast } from "react-toastify";
 import { CLEAR_ERROR } from "@/redux/types/types";
 import { signOut } from "next-auth/client";
+
+import Link from "next/link";
 
 export default function Home() {
   const { message, user, error, users } = useSelector((state) => state.User);
@@ -29,6 +31,7 @@ export default function Home() {
       signOut();
       dispatch({ type: CLEAR_SUCCESS });
     }
+
     // if (error) {
     //   toast.error(error);
     //   dispatch({ type: CLEAR_ERROR });

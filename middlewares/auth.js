@@ -15,7 +15,7 @@ export const isAuthenticated = asyncHandler(async (req, res, next) => {
 //Handling user roles
 export const authorizeRoles = (...roles) => {
   return (req, res, next) => {
-    if (!roles.includes(...req.user.role)) {
+    if (!req.user.role.includes(...roles)) {
       res.status(403);
       throw new Error(
         `Role (${req.user.role}) is not allowed to access this ressource`
