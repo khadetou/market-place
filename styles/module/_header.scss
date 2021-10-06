@@ -1,0 +1,215 @@
+.header {
+  &__second {
+    box-shadow: 0px 2px 13px rgba(15, 35, 255, 0.15);
+  }
+  &__topHeader {
+    height: 30px;
+    justify-content: space-between;
+    align-items: center;
+    display: none;
+    @include responsive(FromXLarge) {
+      display: flex;
+    }
+    ul {
+      display: flex;
+    }
+  }
+
+  &__devided {
+    li:not(:last-child) {
+      margin-right: 10px;
+      padding-right: 10px;
+      border-right: 1px solid;
+    }
+  }
+  &__midHeader {
+    position: absolute !important;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 80px;
+    @include responsive(FromMedium) {
+      justify-content: space-between;
+    }
+    @include responsive(FromXLarge) {
+      position: relative !important;
+    }
+  }
+  &__menu {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    @include responsive(FromXLarge) {
+      margin-right: 0;
+    }
+    li:not(:last-child) {
+      margin-right: 0;
+      @include responsive(FromSmall) {
+        margin-right: 21px;
+      }
+    }
+  }
+
+  &__menuTitle {
+    font-size: 0.875rem;
+    display: none;
+    @include responsive(FromLarge) {
+      display: inline;
+    }
+
+    @include responsive(FromXLarge) {
+      font-size: 1rem;
+    }
+  }
+  &__icons {
+    svg {
+      margin-right: 7px;
+      margin-bottom: -4px;
+      @include responsive(FromLarge) {
+        width: 25px;
+      }
+    }
+  }
+
+  &__search {
+    height: 48px;
+    width: 350px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    padding: 0 20px;
+    transform: translateX(-50%);
+
+    @include responsive(FromSmall) {
+      width: 440px;
+    }
+
+    @include responsive(FromMedium) {
+      position: relative;
+      top: inherit;
+      left: inherit;
+      transform: none;
+      padding: 0;
+    }
+    @include responsive(FromXLarge) {
+      width: 600px;
+    }
+
+    input {
+      height: 100%;
+      width: 100%;
+      font-size: 1.2rem;
+      outline: 0;
+      padding: 0 20px;
+      border-radius: 14px;
+      box-shadow: 0 2px 13px rgba(15, 35, 255, 0.15);
+      border: 0;
+    }
+
+    svg {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 35px;
+
+      @include responsive(FromMedium) {
+        right: 20px;
+      }
+      cursor: pointer;
+      font-size: 25px;
+    }
+  }
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__mainMenu {
+    display: none;
+    height: 45px;
+    @include responsive(FromXLarge) {
+      display: flex;
+    }
+    a {
+      display: flex;
+      align-items: center;
+      margin: 0 20px;
+      font-weight: 600;
+      height: 100%;
+    }
+  }
+  &__mainMenuLinks {
+    text-transform: uppercase;
+  }
+  &__dropdown {
+    &:hover .header__content {
+      display: flex;
+      top: 100%;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  &__content {
+    opacity: 0;
+    visibility: hidden;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    top: calc(100% + 100px);
+    z-index: 2;
+    box-shadow: 0px 7px 29px 0 rgba(15, 35, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  &__col3 {
+    width: 25%;
+  }
+  &__col {
+    padding: 0 15px;
+    margin-bottom: 20px;
+  }
+  &__box {
+    padding: 20px;
+    &:hover .header__categoryList {
+      visibility: visible;
+      opacity: 1;
+      height: inherit;
+    }
+  }
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+  }
+  &__categoryList {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    margin-left: 30px;
+    height: 0;
+    li:not(:last-child) {
+      margin-bottom: 0.625rem;
+    }
+    a {
+      color: $grey;
+      font-size: 0.965rem;
+      font-weight: 400;
+      &:hover {
+        color: $blue;
+      }
+    }
+  }
+  &__boxTitle {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.625rem;
+  }
+
+  &__sousCatTitle {
+    margin-left: 1.875rem;
+    font-weight: 400;
+    cursor: pointer;
+  }
+}

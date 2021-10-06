@@ -1,0 +1,20 @@
+.logo {
+  position: absolute;
+  left: 0;
+
+  @include responsive(FromMedium) {
+    position: static !important;
+  }
+  img {
+    width: 45%;
+    @include responsive(FromMedium) {
+      width: 55%;
+    }
+    @include responsive(FromLarge) {
+      width: 56% !important;
+    }
+    @include responsive(FromXLarge) {
+      width: 100% !important;
+    }
+  }
+}

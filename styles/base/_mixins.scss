@@ -1,0 +1,36 @@
+@mixin responsive($bkr) {
+  @if $bkr == FromXLarge {
+    @media screen and (min-width: 1280px) {
+      @content;
+    }
+  }
+  @if $bkr == FromLarge {
+    @media screen and (min-width: 1024px) {
+      @content;
+    }
+  }
+
+  @if $bkr == FromMedium {
+    @media screen and (min-width: 768px) {
+      @content;
+    }
+  }
+
+  @if $bkr == FromPortrait {
+    @media screen and (min-width: 640px) {
+      @content;
+    }
+  }
+
+  @if $bkr == ToPortrait {
+    @media screen and (max-width: 600px) {
+      @content;
+    }
+  }
+
+  @if $bkr == FromSmall {
+    @media screen and (min-width: 480px) {
+      @content;
+    }
+  }
+}

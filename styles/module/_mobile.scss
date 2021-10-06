@@ -1,0 +1,24 @@
+.mobile {
+  &__logoContainer {
+    padding: 17px 17px 2px 17px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px #dbdbdb;
+  }
+
+  &__logo {
+    img {
+      width: 50%;
+    }
+  }
+  &__handler {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+
+    @include responsive(FromXLarge) {
+      display: none;
+    }
+  }
+}
