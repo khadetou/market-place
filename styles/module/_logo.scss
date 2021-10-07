@@ -1,6 +1,7 @@
 .logo {
   position: absolute;
   left: 0;
+  cursor: pointer;
 
   @include responsive(FromMedium) {
     position: static !important;
