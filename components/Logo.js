@@ -8,7 +8,7 @@ export default function Logo({ src, ...rest }) {
       <a className={logo} {...rest}>
         <Image
           src="/images/logo.svg"
-          width={195}
+          width={180}
           height={49}
           alt="MarketPlace"
         />

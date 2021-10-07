@@ -1,6 +1,4 @@
 .logo {
-  position: absolute;
-  left: 0;
   cursor: pointer;
 
   @include responsive(FromMedium) {
@@ -8,6 +6,8 @@
   }
   img {
     width: 45%;
+    @include responsive(FromSmall) {
+    }
     @include responsive(FromMedium) {
       width: 55%;
     }

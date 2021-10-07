@@ -23,7 +23,11 @@
     align-items: center;
     flex-direction: row-reverse;
     cursor: pointer;
+    width: 83%;
 
+    @include responsive(FromSmall) {
+      width: inherit;
+    }
     @include responsive(FromXLarge) {
       display: none;
     }

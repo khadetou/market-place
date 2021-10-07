@@ -27,7 +27,7 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     height: 80px;
     @include responsive(FromMedium) {
       justify-content: space-between;
@@ -39,14 +39,19 @@
   &__menu {
     display: flex;
     align-items: center;
-    margin-right: 10px;
+    margin-right: 4px;
+    @include responsive(FromSmall) {
+      margin-right: 10px;
+    }
+
     @include responsive(FromXLarge) {
       margin-right: 0;
     }
     li:not(:last-child) {
       margin-right: 0;
       @include responsive(FromSmall) {
-        margin-right: 21px;
+        margin-right: 10px;
+        // margin-right: 21px;
       }
     }
   }
@@ -54,27 +59,29 @@
   &__menuTitle {
     font-size: 0.875rem;
     display: none;
-    @include responsive(FromLarge) {
-      display: inline;
-    }
-
     @include responsive(FromXLarge) {
       font-size: 1rem;
+      display: inline;
     }
   }
   &__icons {
     svg {
-      margin-right: 7px;
+      margin-right: 0;
       margin-bottom: -4px;
-      @include responsive(FromLarge) {
-        width: 25px;
+      width: 100%;
+      @include responsive(FromSmall) {
+        width: inherit;
+        margin-right: 7px;
       }
+      // @include responsive(FromLarge) {
+      //   width: 25px;
+      // }
     }
   }
 
   &__search {
     height: 48px;
-    width: 350px;
+    width: 298px;
     position: absolute;
     top: 100%;
     left: 50%;
@@ -82,7 +89,9 @@
     transform: translateX(-50%);
 
     @include responsive(FromSmall) {
+      // width: 367px;
       width: 440px;
+      margin-right: 9px;
     }
 
     @include responsive(FromMedium) {
@@ -93,6 +102,7 @@
       padding: 0;
     }
     @include responsive(FromXLarge) {
+      margin: 0 5px;
       width: 600px;
     }
 
