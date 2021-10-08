@@ -1,0 +1,142 @@
+.hero {
+  position: relative;
+  height: calc(100vh - 6rem);
+  margin: 8.785rem 1.25rem 0 1.25rem;
+  overflow: hidden;
+
+  .glide__slides {
+    position: relative;
+    height: calc(100vh - 6rem);
+    margin: 0 1.25rem;
+    overflow: hidden;
+  }
+  @include responsive(FromMedium) {
+    margin-top: 4.85rem;
+  }
+  @include responsive(FromLarge) {
+    margin-top: 4.1875rem;
+  }
+  &__center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100%;
+
+    @include responsive(ToLarge) {
+      flex-direction: column;
+    }
+  }
+
+  &__left {
+    position: absolute;
+    top: 0%;
+    left: 5%;
+    opacity: 0;
+    transition: all 1000ms ease-in-out;
+    width: 656px;
+    h1 {
+      font-weight: 600;
+      font-size: 3.75rem;
+      line-height: 130.5%;
+      @include responsive(ToLaptop) {
+        font-size: 2.8125rem;
+        line-height: 118%;
+      }
+      @include responsive(ToPortrait) {
+        font-size: 2.3125rem;
+      }
+
+      @include responsive(ToSmall) {
+        font-size: 1.75rem;
+      }
+    }
+
+    p {
+      font-weight: 500;
+      color: $grey;
+      font-size: 1.1875rem;
+      width: 29.8125rem;
+      line-height: 1.875rem;
+      margin-top: 0.625rem;
+      @include responsive(ToPortrait) {
+        font-weight: 400;
+        width: 25.8125rem;
+      }
+      @include responsive(ToLaptop) {
+        width: 25.8125rem;
+      }
+      @include responsive(ToSmall) {
+        width: 18.8125rem;
+        font-size: 1rem;
+      }
+    }
+
+    @include responsive(ToLaptop) {
+      left: 10%;
+      width: 544px;
+      margin-top: -100px;
+    }
+    @include responsive(ToLarge) {
+      margin-top: -78px;
+    }
+    @include responsive(ToPortrait) {
+      left: 0%;
+      width: 436px;
+      margin-top: -63px;
+    }
+
+    @include responsive(ToSmall) {
+      width: 229px;
+    }
+  }
+
+  &__right {
+    flex: 0 0 50%;
+    height: 100%;
+    text-align: center;
+    position: relative;
+    right: -30%;
+
+    @include responsive(ToLaptop) {
+      right: -20%;
+      max-width: 34rem;
+      margin-top: 11.1875rem;
+    }
+
+    @include responsive(ToLarge) {
+      margin-top: 17.1875rem;
+    }
+    @include responsive(ToPortrait) {
+      right: -14%;
+    }
+
+    img {
+      width: 55rem;
+      height: 100%;
+      opacity: 0;
+      transition: all 1000ms ease-in-out;
+      bottom: -70% !important;
+
+      @include responsive(ToPortrait) {
+        min-width: 20rem;
+      }
+    }
+  }
+
+  &:hover .hero__arrow {
+    opacity: 1;
+    visibility: visible;
+  }
+  &__arrow {
+    opacity: 1;
+    visibility: hidden;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 4px 0 76px rgba(15, 35, 255, 0.3);
+
+    @include responsive(ToLaptop) {
+      display: none;
+    }
+  }
+}

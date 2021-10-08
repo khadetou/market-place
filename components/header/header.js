@@ -91,7 +91,7 @@ export default function Header() {
           <ul className={header__mainMenu}>
             <li>
               <Link href="/">
-                <a className={header__mainMenuLinks}>Accueille</a>
+                <a className={header__mainMenuLinks}>Accueil</a>
               </Link>
             </li>
             <li className={header__dropdown}>

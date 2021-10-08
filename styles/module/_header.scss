@@ -39,10 +39,7 @@
   &__menu {
     display: flex;
     align-items: center;
-    margin-right: 4px;
-    @include responsive(FromSmall) {
-      margin-right: 10px;
-    }
+    margin-right: 10px;
 
     @include responsive(FromXLarge) {
       margin-right: 0;
@@ -66,16 +63,12 @@
   }
   &__icons {
     svg {
-      margin-right: 0;
+      margin-right: 10px;
       margin-bottom: -4px;
       width: 100%;
       @include responsive(FromSmall) {
         width: inherit;
-        margin-right: 7px;
       }
-      // @include responsive(FromLarge) {
-      //   width: 25px;
-      // }
     }
   }
 

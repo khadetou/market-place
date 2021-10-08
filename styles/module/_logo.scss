@@ -1,6 +1,6 @@
 .logo {
   cursor: pointer;
-
+  min-width: 170px;
   @include responsive(FromMedium) {
     position: static !important;
   }

@@ -22,14 +22,38 @@
     }
   }
 
+  @if $bkr == FromSmall {
+    @media screen and (min-width: 480px) {
+      @content;
+    }
+  }
+
+  @if $bkr == ToLarge {
+    @media screen and (max-width: 999px) {
+      @content;
+    }
+  }
+
+  @if $bkr == ToLaptop {
+    @media screen and (max-width: 1280px) {
+      @content;
+    }
+  }
+
+  @if $bkr == ToTablet {
+    @media screen and (max-width: 850px) {
+      @content;
+    }
+  }
+
   @if $bkr == ToPortrait {
     @media screen and (max-width: 600px) {
       @content;
     }
   }
 
-  @if $bkr == FromSmall {
-    @media screen and (min-width: 480px) {
+  @if $bkr == ToSmall {
+    @media screen and (max-width: 480px) {
       @content;
     }
   }
