@@ -238,7 +238,7 @@ li {
 
 .glide__slide--active .left {
   opacity: 1;
-  top: 25%;
+  top: 20%;
 
   @include responsive(ToLarge) {
     top: 15%;

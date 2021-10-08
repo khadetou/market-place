@@ -11,7 +11,7 @@ export default function Hero() {
     new Glide(glide.current, {
       type: "carousel",
       startAt: 0,
-      autoplay: 3000,
+      autoplay: false,
       gap: 0,
       hoverpause: true,
       perView: 1,
@@ -22,14 +22,13 @@ export default function Hero() {
 
   const {
     hero,
+    container,
+    button,
     hero__left,
-    hero__container,
     hero__center,
     hero__right,
-    button,
     hero__arrow,
     hero__img,
-    container,
   } = styles;
   const images = [
     {
@@ -60,7 +59,7 @@ export default function Hero() {
                     <h1>{image.title}</h1>
                     <p>{image.text}</p>
                     <Link href="/">
-                      <button className={button}></button>
+                      <a className={button}>Inscrivez Vous</a>
                     </Link>
                   </div>
                   <div className={`${hero__right} right`}>
