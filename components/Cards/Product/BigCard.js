@@ -1,8 +1,7 @@
 import styles from "@/styles/style.module.scss";
-import Image from "next/image";
 import { FiStar } from "react-icons/fi";
 import { Store } from "@/components/icons";
-
+import Image from "next/image";
 export default function Card() {
   const {
     productCard,
@@ -14,15 +13,18 @@ export default function Card() {
     productCard__buttonRight,
     productCard__buttonLeft,
   } = styles;
+
   return (
     <div className={`${productCard} ${container}`}>
       <div className={productCard__img}>
-        <Image
-          src="/images/shoe.png"
-          width={1344}
-          height={896}
-          objectFit="cover"
-        />
+        {
+          <Image
+            src="/images/shoe.png"
+            width={1344}
+            height={896}
+            objectFit="cover"
+          />
+        }
       </div>
       <div className={productCard__body}>
         <div className={productCard__info}>

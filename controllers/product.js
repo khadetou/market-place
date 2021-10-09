@@ -41,6 +41,8 @@ export const createProduct = asyncHandler(async (req, res) => {
       imageLinks.push({
         public_id: result.public_id,
         url: result.secure_url,
+        width: result.width,
+        height: result.height,
       });
     }
 
@@ -191,6 +193,8 @@ export const updateProduct = asyncHandler(async (req, res) => {
         imagesLinks.push({
           public_id: result.public_id,
           url: result.secure_url,
+          width: result.width,
+          height: result.height,
         });
       }
 

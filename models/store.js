@@ -57,6 +57,14 @@ const storeSchema = mongoose.Schema(
           type: String,
           required: [true, "Images are required"],
         },
+        width: {
+          type: Number,
+          required: true,
+        },
+        height: {
+          type: Number,
+          required: true,
+        },
       },
     ],
     subscription: [subscribersSchema],
