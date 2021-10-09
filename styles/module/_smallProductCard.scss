@@ -1,0 +1,104 @@
+.cardProductSmall {
+  padding: 13px;
+  box-shadow: 0 4px 76px rgba(15, 35, 255, 0.3);
+  width: 273px;
+  position: relative;
+  border-radius: 23px;
+  height: 407px;
+  margin-bottom: 100px;
+
+  &__img {
+    width: 247px;
+    img {
+      border-radius: 20px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 6px;
+    h3 {
+      font-weight: 600;
+      font-size: 1.0625rem;
+    }
+    span {
+      background-color: $yellow;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px;
+      border-radius: 8px;
+      font-size: 13px;
+      width: 54px;
+      height: 24px;
+      color: $light;
+    }
+  }
+
+  &__body {
+    h1 {
+      font-size: 1.375rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-top: 4px;
+      color: $blue;
+      letter-spacing: 6px;
+    }
+    p {
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 20px;
+      max-width: 325px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      max-height: 101px;
+      overflow: auto;
+    }
+  }
+  &__buttonRight {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.6875rem !important;
+    bottom: 0;
+    right: 0;
+    font-size: 0.9375rem;
+    width: 136px;
+    height: 33px;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.875rem !important;
+    outline: none;
+    border: none;
+    border-radius: 0;
+    border-bottom-right-radius: 23px;
+    cursor: pointer;
+  }
+  &__buttonLeft {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    background-color: $lightGrey;
+    color: $black;
+    align-items: center;
+    bottom: 0;
+    left: 0;
+    font-size: 0.9375rem;
+    width: 136px;
+    height: 33px;
+    font-weight: 600;
+    text-transform: uppercase;
+    outline: none;
+    border: none;
+    border-radius: 0;
+    border-bottom-left-radius: 23px;
+    cursor: pointer;
+
+    svg {
+      margin-right: 5px;
+    }
+  }
+}
