@@ -2,12 +2,15 @@ import styles from "@/styles/style.module.scss";
 import Image from "next/image";
 import { FiStar } from "react-icons/fi";
 import { Store } from "@/components/icons";
+import { useState } from "react";
 
 export default function Card() {
+  const [portrait, setPortrait] = useState(false);
   const {
     cardProductSmall,
     container,
-    cardProductSmall__img,
+    cardProductSmall__imgPortrait,
+    cardProductSmall__imgLandscape,
     cardProductSmall__body,
     cardProductSmall__info,
     button,
@@ -16,14 +19,25 @@ export default function Card() {
   } = styles;
   return (
     <div className={`${cardProductSmall} ${container}`}>
-      <div className={cardProductSmall__img}>
-        <Image
-          src="/images/shoe.png"
-          width={1344}
-          height={896}
-          objectFit="cover"
-        />
-      </div>
+      {!portrait ? (
+        <div className={cardProductSmall__imgLandscape}>
+          <Image
+            src="/images/shoe.png"
+            width={1344}
+            height={896}
+            objectFit="cover"
+          />
+        </div>
+      ) : (
+        <div className={cardProductSmall__imgPortrait}>
+          <Image
+            src="/images/robe.png"
+            width={951}
+            height={1190}
+            objectFit="cover"
+          />
+        </div>
+      )}
       <div className={cardProductSmall__body}>
         <div className={cardProductSmall__info}>
           <span>
@@ -32,11 +46,15 @@ export default function Card() {
           <h3>$339</h3>
         </div>
         <h1>Nike</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
-          ratione necessitatibus quis! Consectetur, odit nam error ea omnis et
-          eligendi cum culpa molestiae maiores iusto.
-        </p>
+        {!portrait ? (
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi
+            quasi reiciendis eaque minus perferendis amet nesciunt, nulla,
+            blanditiis vitae unde id laudantium voluptatibus, accusantium nisi!
+          </p>
+        ) : (
+          ""
+        )}
         <button className={`${button} ${cardProductSmall__buttonRight}`}>
           Ajouter Au panier
         </button>

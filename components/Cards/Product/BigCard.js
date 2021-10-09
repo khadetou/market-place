@@ -2,11 +2,13 @@ import styles from "@/styles/style.module.scss";
 import { FiStar } from "react-icons/fi";
 import { Store } from "@/components/icons";
 import Image from "next/image";
+import { useState } from "react";
 export default function Card() {
   const {
     productCard,
     container,
-    productCard__img,
+    productCard__imgPortrait,
+    productCard__imgLandscape,
     productCard__body,
     productCard__info,
     button,
@@ -14,18 +16,29 @@ export default function Card() {
     productCard__buttonLeft,
   } = styles;
 
+  const [portrait, setPortrait] = useState(true);
+
   return (
     <div className={`${productCard} ${container}`}>
-      <div className={productCard__img}>
-        {
+      {!portrait ? (
+        <div className={productCard__imgLandscape}>
           <Image
             src="/images/shoe.png"
             width={1344}
             height={896}
             objectFit="cover"
           />
-        }
-      </div>
+        </div>
+      ) : (
+        <div className={productCard__imgPortrait}>
+          <Image
+            src="/images/robe.png"
+            width={951}
+            height={1190}
+            objectFit="cover"
+          />
+        </div>
+      )}
       <div className={productCard__body}>
         <div className={productCard__info}>
           <span>
@@ -34,11 +47,15 @@ export default function Card() {
           <h3>$399</h3>
         </div>
         <h1>Nike</h1>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi
-          quasi reiciendis eaque minus perferendis amet nesciunt, nulla,
-          blanditiis vitae unde id laudantium voluptatibus, accusantium nisi!
-        </p>
+        {!portrait ? (
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi
+            quasi reiciendis eaque minus perferendis amet nesciunt, nulla,
+            blanditiis vitae unde id laudantium voluptatibus, accusantium nisi!
+          </p>
+        ) : (
+          ""
+        )}
         <button className={`${button} ${productCard__buttonRight}`}>
           Ajouter au panier
         </button>
