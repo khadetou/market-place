@@ -1,4 +1,4 @@
-import Card from "../Cards/Product/SmallCard";
+import Card from "../Cards/Product/BigCard";
 
 export default function Popular() {
   return (

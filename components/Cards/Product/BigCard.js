@@ -33,8 +33,9 @@ export default function Card() {
         </div>
         <h1>Nike</h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
-          voluptate iusto repellat distinctio,
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi
+          quasi reiciendis eaque minus perferendis amet nesciunt, nulla,
+          blanditiis vitae unde id laudantium voluptatibus, accusantium nisi!
         </p>
         <button className={`${button} ${productCard__buttonRight}`}>
           Ajouter au panier
