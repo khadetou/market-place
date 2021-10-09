@@ -1,0 +1,76 @@
+.cardSmall {
+  padding: 13px;
+  box-shadow: 0 4px 76px rgba(15, 35, 255, 0.3);
+  width: 273px;
+  position: relative;
+  border-radius: 23px;
+  height: 369px;
+  margin-bottom: 100px;
+
+  &__img {
+    width: 247px;
+    img {
+      border-radius: 20px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 6px;
+    h3 {
+      font-weight: 400;
+      font-size: 1.0625rem;
+    }
+    span {
+      background-color: $yellow;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px;
+      border-radius: 8px;
+      font-size: 13px;
+      width: 54px;
+      height: 24px;
+      color: $light;
+    }
+  }
+
+  &__body {
+    h1 {
+      font-size: 1rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    p {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 20px;
+      max-width: 325px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      max-height: 85px;
+      overflow: auto;
+    }
+  }
+  &__button {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 13px;
+    left: 50%;
+    font-size: 0.9375rem;
+    transform: translateX(-50%);
+    width: 136px;
+    height: 33px;
+    font-weight: 500;
+    text-transform: uppercase;
+    outline: none;
+    border: none;
+    border-radius: 22px;
+    cursor: pointer;
+  }
+}

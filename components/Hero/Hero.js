@@ -11,7 +11,7 @@ export default function Hero() {
     new Glide(glide.current, {
       type: "carousel",
       startAt: 0,
-      autoplay: false,
+      autoplay: 5000,
       gap: 0,
       hoverpause: true,
       perView: 1,
