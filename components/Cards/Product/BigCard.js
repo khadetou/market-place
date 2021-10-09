@@ -1,40 +1,48 @@
 import styles from "@/styles/style.module.scss";
 import Image from "next/image";
 import { FiStar } from "react-icons/fi";
+import { Store } from "@/components/icons";
 
 export default function Card() {
   const {
-    card,
+    productCard,
     container,
-    card__img,
-    card__body,
-    card__info,
+    productCard__img,
+    productCard__body,
+    productCard__info,
     button,
-    card__button,
+    productCard__buttonRight,
+    productCard__buttonLeft,
   } = styles;
   return (
-    <div className={`${card} ${container}`}>
-      <div className={card__img}>
+    <div className={`${productCard} ${container}`}>
+      <div className={productCard__img}>
         <Image
-          src="/images/store.png"
+          src="/images/shoe.png"
           width={1344}
           height={896}
           objectFit="cover"
         />
       </div>
-      <div className={card__body}>
-        <div className={card__info}>
+      <div className={productCard__body}>
+        <div className={productCard__info}>
           <span>
             3.4 <FiStar />
           </span>
-          <h3>Location</h3>
+          <h3>$399</h3>
         </div>
-        <h1>title</h1>
+        <h1>Nike</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
           voluptate iusto repellat distinctio,
         </p>
-        <button className={`${button} ${card__button}`}>S'abonner</button>
+        <button className={`${button} ${productCard__buttonRight}`}>
+          Ajouter au panier
+        </button>
+        <button className={`${button} ${productCard__buttonLeft}`}>
+          <Store width="20px" height="20px" />
+          Boutique
+        </button>
       </div>
     </div>
   );

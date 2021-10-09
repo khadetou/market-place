@@ -1,0 +1,98 @@
+.productCard {
+  padding: 17px;
+  box-shadow: 0 4px 76px rgba(15, 35, 255, 0.3);
+  width: 371px;
+  position: relative;
+  border-radius: 23px;
+  height: 569px;
+  margin-bottom: 100px;
+
+  &__img {
+    width: 336px;
+    img {
+      border-radius: 20px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+    h3 {
+      font-weight: 600;
+      font-size: 1.125rem;
+    }
+    span {
+      background-color: $yellow;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px;
+      border-radius: 8px;
+      width: 60px;
+      height: 30px;
+      color: $light;
+    }
+  }
+
+  &__body {
+    h1 {
+      font-size: 29px;
+      font-weight: 600;
+      letter-spacing: 6px;
+      color: $blue;
+      text-transform: uppercase;
+      margin-top: 7px;
+    }
+    p {
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 28px;
+      max-width: 325px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      max-height: 85px;
+      overflow: auto;
+    }
+  }
+  &__buttonRight {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 185px;
+    font-size: 0.9375rem;
+    height: 45px;
+    font-weight: 500;
+    text-transform: uppercase;
+    outline: none;
+    border: none;
+    border-radius: 0;
+    border-bottom-right-radius: 23px;
+    cursor: pointer;
+  }
+  &__buttonLeft {
+    position: absolute;
+    background-color: $lightGrey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $black;
+    font-size: 0.9375rem;
+    bottom: 0;
+    left: 0;
+    width: 185px;
+    height: 45px;
+    font-weight: 600;
+    text-transform: uppercase;
+    outline: none;
+    border: none;
+    border-radius: 0;
+    border-bottom-left-radius: 23px;
+    cursor: pointer;
+
+    svg {
+      margin-right: 10px;
+    }
+  }
+}
