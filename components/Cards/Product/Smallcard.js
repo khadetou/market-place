@@ -5,12 +5,13 @@ import { Store } from "@/components/icons";
 import { useState } from "react";
 
 export default function Card() {
-  const [portrait, setPortrait] = useState(false);
+  const [portrait, setPortrait] = useState(true);
   const {
     cardProductSmall,
     container,
     cardProductSmall__imgPortrait,
     cardProductSmall__imgLandscape,
+    cardProductSmall__back,
     cardProductSmall__body,
     cardProductSmall__info,
     button,
@@ -31,14 +32,20 @@ export default function Card() {
       ) : (
         <div className={cardProductSmall__imgPortrait}>
           <Image
-            src="/images/robe.png"
+            src="/images/portrait.jpg"
             width={951}
             height={1190}
             objectFit="cover"
           />
         </div>
       )}
-      <div className={cardProductSmall__body}>
+      <div
+        className={
+          portrait
+            ? `${cardProductSmall__body} ${cardProductSmall__back}`
+            : cardProductSmall__body
+        }
+      >
         <div className={cardProductSmall__info}>
           <span>
             3.4 <FiStar />
@@ -46,23 +53,20 @@ export default function Card() {
           <h3>$339</h3>
         </div>
         <h1>Nike</h1>
-        {!portrait ? (
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi
-            quasi reiciendis eaque minus perferendis amet nesciunt, nulla,
-            blanditiis vitae unde id laudantium voluptatibus, accusantium nisi!
-          </p>
-        ) : (
-          ""
-        )}
-        <button className={`${button} ${cardProductSmall__buttonRight}`}>
-          Ajouter Au panier
-        </button>
-        <button className={`${button} ${cardProductSmall__buttonLeft}`}>
-          <Store height="16px" width="16px" />
-          Boutique
-        </button>
+
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi
+          quasi reiciendis eaque minus perferendis amet nesciunt, nulla,
+          blanditiis vitae unde id laudantium voluptatibus, accusantium nisi!
+        </p>
       </div>
+      <button className={`${button} ${cardProductSmall__buttonRight}`}>
+        Ajouter Au panier
+      </button>
+      <button className={`${button} ${cardProductSmall__buttonLeft}`}>
+        <Store height="16px" width="16px" />
+        Boutique
+      </button>
     </div>
   );
 }

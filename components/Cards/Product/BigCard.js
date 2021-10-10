@@ -10,6 +10,7 @@ export default function Card() {
     productCard__imgPortrait,
     productCard__imgLandscape,
     productCard__body,
+    productCard__back,
     productCard__info,
     button,
     productCard__buttonRight,
@@ -32,14 +33,20 @@ export default function Card() {
       ) : (
         <div className={productCard__imgPortrait}>
           <Image
-            src="/images/robe.png"
+            src="/images/portrait.jpg"
             width={951}
             height={1190}
             objectFit="cover"
           />
         </div>
       )}
-      <div className={productCard__body}>
+      <div
+        className={
+          portrait
+            ? `${productCard__body} ${productCard__back}`
+            : productCard__body
+        }
+      >
         <div className={productCard__info}>
           <span>
             3.4 <FiStar />
@@ -47,23 +54,20 @@ export default function Card() {
           <h3>$399</h3>
         </div>
         <h1>Nike</h1>
-        {!portrait ? (
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi
-            quasi reiciendis eaque minus perferendis amet nesciunt, nulla,
-            blanditiis vitae unde id laudantium voluptatibus, accusantium nisi!
-          </p>
-        ) : (
-          ""
-        )}
-        <button className={`${button} ${productCard__buttonRight}`}>
-          Ajouter au panier
-        </button>
-        <button className={`${button} ${productCard__buttonLeft}`}>
-          <Store width="20px" height="20px" />
-          Boutique
-        </button>
+
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi
+          quasi reiciendis eaque minus perferendis amet nesciunt, nulla,
+          blanditiis vitae unde id laudantium voluptatibus, accusantium nisi!
+        </p>
       </div>
+      <button className={`${button} ${productCard__buttonRight}`}>
+        Ajouter au panier
+      </button>
+      <button className={`${button} ${productCard__buttonLeft}`}>
+        <Store width="20px" height="20px" />
+        Boutique
+      </button>
     </div>
   );
 }

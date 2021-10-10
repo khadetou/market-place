@@ -1,11 +1,20 @@
 .productCard {
+  cursor: pointer;
   padding: 17px;
   box-shadow: 0 4px 76px rgba(15, 35, 255, 0.3);
   width: 371px;
   position: relative;
   border-radius: 23px;
-  height: 569px;
+  height: 505px;
   margin-bottom: 100px;
+
+  &:hover &__imgPortrait {
+    transform: perspective(600px) rotateY(-180deg);
+  }
+
+  &:hover &__back {
+    transform: perspective(600px) rotateY(0deg);
+  }
 
   &__imgLandscape {
     width: 336px;
@@ -14,6 +23,10 @@
     }
   }
   &__imgPortrait {
+    position: absolute;
+    backface-visibility: hidden;
+    transition: transform 0.6s linear;
+    transform: perspective(600px) rotateY(0deg);
     width: 336px;
     img {
       border-radius: 20px;
@@ -62,6 +75,31 @@
       overflow: auto;
     }
   }
+
+  &__back {
+    display: flex;
+    backface-visibility: hidden;
+    position: absolute;
+    transition: transform 0.6s linear;
+    height: 422px !important;
+    width: 338px;
+    background-color: $light;
+    transform: perspective(600px) rotateY(180deg);
+    flex-direction: column-reverse;
+    justify-content: center;
+    height: 92%;
+    border-radius: 23px;
+    box-shadow: 0 1px 5px rgba(15, 35, 255, 0.3);
+    padding: 10px;
+
+    p {
+      font-size: 1.25rem;
+      line-height: 1.4;
+      max-height: inherit;
+      height: 62%;
+    }
+  }
+
   &__buttonRight {
     position: absolute;
     bottom: 0;
