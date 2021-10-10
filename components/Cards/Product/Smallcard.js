@@ -5,7 +5,7 @@ import { Store } from "@/components/icons";
 import { useState } from "react";
 
 export default function Card() {
-  const [portrait, setPortrait] = useState(true);
+  const [portrait, setPortrait] = useState(false);
   const {
     cardProductSmall,
     container,
@@ -14,12 +14,19 @@ export default function Card() {
     cardProductSmall__back,
     cardProductSmall__body,
     cardProductSmall__info,
+    cardProductSmall__landscape,
     button,
     cardProductSmall__buttonRight,
     cardProductSmall__buttonLeft,
   } = styles;
   return (
-    <div className={`${cardProductSmall} ${container}`}>
+    <div
+      className={
+        portrait
+          ? `${cardProductSmall} ${container}`
+          : `${cardProductSmall} ${container} ${cardProductSmall__landscape}`
+      }
+    >
       {!portrait ? (
         <div className={cardProductSmall__imgLandscape}>
           <Image

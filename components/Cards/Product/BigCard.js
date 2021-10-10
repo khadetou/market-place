@@ -12,15 +12,22 @@ export default function Card() {
     productCard__body,
     productCard__back,
     productCard__info,
+    productCard__landscape,
     button,
     productCard__buttonRight,
     productCard__buttonLeft,
   } = styles;
 
-  const [portrait, setPortrait] = useState(true);
+  const [portrait, setPortrait] = useState(false);
 
   return (
-    <div className={`${productCard} ${container}`}>
+    <div
+      className={
+        portrait
+          ? `${productCard} ${container}`
+          : `${productCard} ${container} ${productCard__landscape}`
+      }
+    >
       {!portrait ? (
         <div className={productCard__imgLandscape}>
           <Image
