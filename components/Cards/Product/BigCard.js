@@ -58,6 +58,7 @@ export default function Card() {
           <span>
             3.4 <FiStar />
           </span>
+          <p>34 reviews</p>
           <h3>$399</h3>
         </div>
         <h1>Nike</h1>

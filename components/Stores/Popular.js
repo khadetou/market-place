@@ -1,9 +1,5 @@
-import Card from "../Cards/Category/SmallCard";
+import Card from "../Cards/Product/SmallCard";
 
 export default function Popular() {
-  return (
-    <>
-      <Card />
-    </>
-  );
+  return <>{/* <Card /> */}</>;
 }

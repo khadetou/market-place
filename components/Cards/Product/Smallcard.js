@@ -5,7 +5,7 @@ import { Store } from "@/components/icons";
 import { useState } from "react";
 
 export default function Card() {
-  const [portrait, setPortrait] = useState(false);
+  const [portrait, setPortrait] = useState(true);
   const {
     cardProductSmall,
     container,
@@ -57,7 +57,8 @@ export default function Card() {
           <span>
             3.4 <FiStar />
           </span>
-          <h3>$339</h3>
+          <p>34 reviews</p>
+          <h3>10.000 fr cfa</h3>
         </div>
         <h1>Nike</h1>
 
