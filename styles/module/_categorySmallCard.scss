@@ -1,0 +1,56 @@
+.categorySmallCard {
+  cursor: pointer;
+  padding: 13px;
+  box-shadow: 0 4px 76px rgba(15, 35, 255, 0.3);
+  width: 273px;
+  position: relative;
+  border-radius: 23px;
+  height: 369px;
+  margin-bottom: 100px;
+
+  &__img {
+    width: 247px;
+    img {
+      border-radius: 20px;
+    }
+  }
+
+  &__body {
+    h1 {
+      font-size: 1rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      margin-top: 4px;
+      text-align: center;
+      color: blue;
+    }
+    p {
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 20px;
+      max-width: 325px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      text-align: center;
+      overflow: auto;
+    }
+  }
+  &__button {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 13px;
+    left: 50%;
+    font-size: 0.9375rem;
+    transform: translateX(-50%);
+    width: 136px;
+    height: 33px;
+    font-weight: 500;
+    text-transform: uppercase;
+    outline: none;
+    border: none;
+    border-radius: 22px;
+    cursor: pointer;
+  }
+}

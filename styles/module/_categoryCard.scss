@@ -1,0 +1,53 @@
+.categoryCard {
+  cursor: pointer;
+  padding: 17px;
+  box-shadow: 0 4px 76px rgba(15, 35, 255, 0.3);
+  width: 371px;
+  position: relative;
+  border-radius: 23px;
+  height: 501px;
+  margin-bottom: 100px;
+
+  &__img {
+    width: 336px;
+    img {
+      border-radius: 20px;
+    }
+  }
+
+  &__body {
+    h1 {
+      font-size: 20px;
+      font-weight: 500;
+      text-transform: uppercase;
+      margin-top: 7px;
+      text-align: center;
+      color: $blue;
+      margin-top: 25px;
+    }
+    p {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 26px;
+      max-width: 325px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      text-align: center;
+      overflow: auto;
+    }
+  }
+  &__button {
+    position: absolute;
+    bottom: 17px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 185px;
+    height: 45px;
+    font-weight: 500;
+    text-transform: uppercase;
+    outline: none;
+    border: none;
+    border-radius: 22px;
+    cursor: pointer;
+  }
+}
