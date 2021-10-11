@@ -159,6 +159,7 @@
     visibility: hidden;
     left: 0;
     position: absolute;
+    background-color: $light;
     width: 100%;
     top: calc(100% + 100px);
     z-index: 2;
@@ -175,6 +176,7 @@
   }
   &__box {
     padding: 20px;
+    transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
     &:hover .header__categoryList {
       visibility: visible;
       opacity: 1;
