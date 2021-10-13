@@ -1,0 +1,58 @@
+.marketing {
+  display: flex;
+  align-items: center;
+
+  @include responsive(ToTablet) {
+    flex-direction: column;
+  }
+
+  &__col1 {
+    max-width: 636px;
+    h3 {
+      color: $blue;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+
+      @include responsive(FromLarge) {
+      }
+    }
+    h1 {
+      font-size: 3.4375rem;
+      line-height: 130%;
+      font-weight: 600;
+      @include responsive(ToSmall) {
+        font-size: 2.25rem;
+        line-height: 109%;
+      }
+    }
+
+    p {
+      font-size: 0.875rem;
+      margin-top: 5px;
+      @include responsive(FromLarge) {
+        font-size: 1.1875rem;
+      }
+      @include responsive(FromMedium) {
+        font-size: 1rem;
+      }
+    }
+
+    a {
+      @include responsive(ToTablet) {
+        padding: 9px 11px !important;
+        font-size: 0.8125 !important;
+      }
+    }
+  }
+  &__col2 {
+    width: 69.9375rem;
+    @include responsive(ToTablet) {
+      width: 32.9375rem;
+      margin-top: -66px;
+    }
+    @include responsive(ToSmall) {
+      width: 23.9375rem;
+      margin-top: -38px;
+    }
+  }
+}
