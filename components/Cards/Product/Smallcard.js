@@ -5,7 +5,7 @@ import { Store } from "@/components/icons";
 import { useState } from "react";
 
 export default function Card() {
-  const [portrait, setPortrait] = useState(true);
+  const [portrait, setPortrait] = useState(false);
   const {
     cardProductSmall,
     container,
